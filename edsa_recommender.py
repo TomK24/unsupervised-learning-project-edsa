@@ -45,7 +45,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Solution Overview"]
+    page_options = ["Recommender System","Solution Overview, Exploratory Data Analysis, Hybrid Recommender"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
@@ -103,7 +103,17 @@ def main():
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         st.write("Describe your winning approach on this page")
-
+        model_selection = st.selectbox('Choose a model',['Content-based recommender', 'Collaborative recommender'])
+        if model_selection == 'Content-based recommender':
+            st.write("To be implemented")
+        elif model_selection == 'Collaborative recommender':
+            st.write('To be implemented')
+    
+    if page_selection == 'Exploratory data analysis':
+        st.title("Exploratory Data analysis")
+        st.write('To be implemented')
+    if page_selection == 'Hybrid Recommender':
+        st.title("Hybrid Recommender")
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
 
