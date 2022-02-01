@@ -138,4 +138,5 @@ def content_model(movie_list,top_n=10):
     final = final[~final.index.duplicated(keep='first')]
     final.sort_values(by='similarity_score', ascending=False, inplace=True)
     recommended_movies = final.head(top_n).index
+    print(recommended_movies)
     return recommended_movies
