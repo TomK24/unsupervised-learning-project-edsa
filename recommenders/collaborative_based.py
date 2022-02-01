@@ -86,12 +86,12 @@ def collab_model(movie_list,top_n=10):
     movie_id = []
     recommended_movies = []
     top_n+=1
-    print('reached line 88')
+    # print('reached line 88')
     for i in movie_list:
         for key, value in movie_titles.items():
             if value == i:
                 movie_id.append(key)
-    print('reached line 93')
+    # print('reached line 93')
     for i in movie_id:
         movie_ind = movie_mapper[i]
         movie_vec = X[movie_ind]
@@ -105,7 +105,7 @@ def collab_model(movie_list,top_n=10):
             n = neighbour.item(i)
             neighbour_ids.append(movie_inv_mapper[n])
         neighbour_ids.pop(0)
-    print('reached line 107')
+    # print('reached line 107')
     
     
     final = []
@@ -114,11 +114,11 @@ def collab_model(movie_list,top_n=10):
             final.append(i)
     
     similar_ids = final[:10]
-    print('reached line 116')
+    # print('reached line 116')
    
     
     for i in similar_ids:
         recommended_movies.append(movie_titles[i])
-    print('Reached final return statement')
+    # print('Reached final return statement')
     print(recommended_movies)
     return recommended_movies
