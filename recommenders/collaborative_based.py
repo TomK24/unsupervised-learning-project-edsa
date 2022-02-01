@@ -80,7 +80,7 @@ def collab_model(movie_list,top_n=10):
     print('collab_model function is being called')
     metric='cosine'
     show_distance=False
-    movie_titles = dict(zip(movies['movieId'], movies['title']))
+    movie_titles = dict(zip(movies_df['movieId'], movies_df['title']))
     neighbour_ids = []
     movie_id = []
     recommended_movies = []
