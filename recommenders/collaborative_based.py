@@ -85,7 +85,7 @@ def collab_model(movie_list,top_n=10):
     movie_id = []
     recommended_movies = []
     top_n+=1
-    
+    print('reached line 88')
     for i in movie_list:
         for key, value in movie_titles.items():
             if value == i:
