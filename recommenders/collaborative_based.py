@@ -77,7 +77,7 @@ def collab_model(movie_list,top_n=10):
         Titles of the top-n movie recommendations to the user.
 
     """
-
+    print('collab_model function is being called')
     metric='cosine'
     show_distance=False
     movie_titles = dict(zip(movies['movieId'], movies['title']))
