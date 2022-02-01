@@ -118,5 +118,6 @@ def collab_model(movie_list,top_n=10):
     
     for i in similar_ids:
         recommended_movies.append(movie_titles[i])
+    print('Reached final return statement')
     print(recommended_movies)
     return recommended_movies
