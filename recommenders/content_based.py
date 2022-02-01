@@ -120,23 +120,13 @@ def content_model(movie_list,top_n=10):
     sims1 = cosine_similarity(PCA_df.loc[movie_list[0]].values.reshape(1, -1), PCA_df)
     sims2 = cosine_similarity(PCA_df.loc[movie_list[1]].values.reshape(1, -1), PCA_df)
     sims3 = cosine_similarity(PCA_df.loc[movie_list[2]].values.reshape(1, -1), PCA_df)
-    sims1_df = pd.DataFrame(sims1.T, index=PCA_df.index,columns=['similarity_score'])
-    sims2_df = pd.DataFrame(sims2.T, index=PCA_df.index,columns=['similarity_score'])
-    sims3_df = pd.DataFrame(sims3.T, index=PCA_df.index,columns=['similarity_score'])
-    del sims1,sims2,sims3
-    sims1_df.drop(movie_list[0], inplace=True)
-    sims2_df.drop(movie_list[1], inplace=True)
-    sims3_df.drop(movie_list[2], inplace=True)
-    sims1_df_sorted = sims1_df.sort_values(by='similarity_score', ascending=False)
-    sims2_df_sorted = sims2_df.sort_values(by='similarity_score', ascending=False)
-    sims3_df_sorted = sims3_df.sort_values(by='similarity_score', ascending=False)
-    del sims1_df,sims2_df,sims3_df
-    sims1_df_sorted = sims1_df_sorted.head(100)
-    sims2_df_sorted = sims2_df_sorted.head(100)
-    sims3_df_sorted = sims3_df_sorted.head(100)
-    final = sims1_df_sorted.append([sims2_df_sorted, sims3_df_sorted])
-    final = final[~final.index.duplicated(keep='first')]
-    final.sort_values(by='similarity_score', ascending=False, inplace=True)
+    avg_sims = (sims1 + sims2 +sims3) / 3 
+    sims_df = pd.DataFrame(avg_sims.T, index=PCA_df.index,columns=['similarity_score'])
+    del sims1,sims2,sims3, avg_sims
+    sims_df.drop(movie_list, inplace=True)
+    sims_df_sorted = sims_df.sort_values(by='similarity_score', ascending=False)
+    del sims_df
+    sims_df_sorted = sims_df_sorted.head(100)
+    final = sims_df_sorted[~sims_df_sorted.index.duplicated(keep='first')]
     recommended_movies = final.head(top_n).index
-    print(recommended_movies)
     return recommended_movies
