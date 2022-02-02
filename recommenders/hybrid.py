@@ -138,8 +138,12 @@ def hybrid_part3(movie_list, top_n, X, user_mapper, movie_mapper, user_inv_mappe
     return recommended_movies[:10]
 
 def hybrid_main(movie_list):
+    print('hybrid main called')
     content_based = hybrid_part1(movie_list)
+    print('part 1 worked')
     ratings_subset = ratings_df[ratings_df.movieId.isin(content_based.movieId)]
     X, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper = hybrid_part2(ratings_subset, content_based)
+    print('part 2 worked')
     final = hybrid_part3(movie_list, 10, X, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper)
+    print('part 3 worked')
     return final
