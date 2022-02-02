@@ -52,7 +52,7 @@ PCA_df = pd.DataFrame(PCA_array)
 PCA_df.index = titles['title']
 del PCA_array, titles
 
-def hybrid_part1(movie_list,top_n=20):
+def hybrid_part1(movie_list,top_n=30):
     recommended_movies = []
     sims1 = cosine_similarity(PCA_df.loc[movie_list[0]].values.reshape(1, -1), PCA_df)
     sims2 = cosine_similarity(PCA_df.loc[movie_list[1]].values.reshape(1, -1), PCA_df)
