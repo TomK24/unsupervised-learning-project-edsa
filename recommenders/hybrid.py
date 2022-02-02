@@ -42,8 +42,9 @@ from scipy.sparse import csr_matrix
 
 # Importing data
 movies_df = pd.read_csv('resources/data/movies.csv',sep = ',')
-ratings_df = pd.read_csv('resources/data/ratings.csv')
-ratings_df.drop(['timestamp'], axis=1,inplace=True)
+# ratings_df = pd.read_csv('resources/data/ratings.csv')
+ratings_df = pd.read_csv('resources/data/train.csv')
+# ratings_df.drop(['timestamp'], axis=1,inplace=True)
 
 PCA_array = np.load('resources/data/PCA1000features.npy')
 titles = pd.read_csv('resources/data/titles_df.csv')
