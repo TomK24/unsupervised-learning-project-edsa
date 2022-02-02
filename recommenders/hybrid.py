@@ -84,9 +84,9 @@ def hybrid_part2(df, similar):
       
     user_index = [user_mapper[i] for i in df['userId']]
     movie_index = [movie_mapper[i] for i in df['movieId']]
-    print(df.shape)
-    print(len(movie_index))
-    print(len(user_index))
+    # print(df.shape)
+    # print(len(movie_index))
+    # print(len(user_index))
     X = csr_matrix((df["rating"], (movie_index, user_index)), shape=(M, N))
        
     return X, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper
@@ -132,12 +132,12 @@ def hybrid_part3(movie_list, top_n, X, user_mapper, movie_mapper, user_inv_mappe
     return recommended_movies[:10]
 
 def hybrid_main(movie_list):
-    print('hybrid main called')
+    # print('hybrid main called')
     content_based = hybrid_part1(movie_list)
-    print('part 1 worked')
+    # print('part 1 worked')
     ratings_subset = ratings_df[ratings_df.movieId.isin(content_based.movieId)]
     X, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper = hybrid_part2(ratings_subset, content_based)
-    print('part 2 worked')
+    # print('part 2 worked')
     final = hybrid_part3(movie_list, 10, X, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper)
-    print('part 3 worked')
+    # print('part 3 worked')
     return final
