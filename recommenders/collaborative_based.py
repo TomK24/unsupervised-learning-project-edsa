@@ -110,7 +110,7 @@ def collab_model(movie_list,top_n=10):
     
     final = []
     for i in neighbour_ids:
-        if i not in final or i not in movie_list:
+        if i not in final and movie_titles[i] not in movie_list:
             final.append(i)
     
     similar_ids = final[:10]
