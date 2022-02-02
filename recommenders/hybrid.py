@@ -91,8 +91,6 @@ def hybrid_part2(df, similar):
     return X, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper
 
 def hybrid_part3(movie_list, top_n, X, user_mapper, movie_mapper, user_inv_mapper, movie_inv_mapper):
-    
-    
     metric='cosine'
     show_distance=False
     movie_titles = dict(zip(movies_df['movieId'], movies_df['title']))
@@ -119,17 +117,12 @@ def hybrid_part3(movie_list, top_n, X, user_mapper, movie_mapper, user_inv_mappe
             n = neighbour.item(i)
             neighbour_ids.append(movie_inv_mapper[n])
         neighbour_ids.pop(0)
-
-    
-    
     final = []
     for i in neighbour_ids:
         if i not in final:
             final.append(i)
     
     similar_ids = final[:100]
-    
-   
     
     for i in similar_ids:
         if not movie_titles[i] in movie_list:
