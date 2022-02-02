@@ -119,13 +119,13 @@ def main():
 
     if page_selection == "Hybrid Recommender":
         # Header contents
-        st.write('# Movie Recommender Engine')
+        st.write('# Hybrid Movie Recommender Engine')
         st.write('### EXPLORE Data Science Academy Unsupervised Predict')
         st.image('resources/imgs/Image_header.png',use_column_width=True)
         # Recommender System algorithm selection
-        sys = st.radio("Select an algorithm",
-                       ('Hybrid Filter!',
-                        'Collaborative Based Filtering'))
+        # sys = st.radio("Select an algorithm",
+        #                ('Hybrid Filter!',
+        #                 'Collaborative Based Filtering'))
 
         # User-based preferences
         st.write('### Enter Your Three Favorite Movies')
@@ -135,17 +135,17 @@ def main():
         fav_movies = [movie_1,movie_2,movie_3]
 
         # Perform top-10 movie recommendation generation
-        if sys == 'Hybrid Filter!':
-            if st.button("Recommend"):
-                try:
-                    with st.spinner('Crunching the numbers...'):
-                        top_recommendations = hybrid_main(movie_list=fav_movies)
-                    st.title("We think you'll like:")
-                    for i,j in enumerate(top_recommendations):
-                        st.subheader(str(i+1)+'. '+j)
-                except:
-                    st.error("Oops! Looks like this algorithm does't work.\
-                              We'll need to fix it!")
+        # if sys == 'Hybrid Filter!':
+        if st.button("Recommend"):
+            try:
+                with st.spinner('Crunching the numbers...'):
+                    top_recommendations = hybrid_main(movie_list=fav_movies)
+                st.title("We think you'll like:")
+                for i,j in enumerate(top_recommendations):
+                    st.subheader(str(i+1)+'. '+j)
+            except:
+                st.error("Oops! Looks like this algorithm does't work.\
+                            We'll need to fix it!")
 
 
 if __name__ == '__main__':
