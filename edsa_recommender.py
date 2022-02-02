@@ -137,15 +137,15 @@ def main():
         # Perform top-10 movie recommendation generation
         if sys == 'Hybrid Filter!':
             if st.button("Recommend"):
-                try:
-                    with st.spinner('Crunching the numbers...'):
-                        top_recommendations = hybrid_main(movie_list=fav_movies)
-                    st.title("We think you'll like:")
-                    for i,j in enumerate(top_recommendations):
-                        st.subheader(str(i+1)+'. '+j)
-                except:
-                    st.error("Oops! Looks like this algorithm does't work.\
-                              We'll need to fix it!")
+                # try:
+                with st.spinner('Crunching the numbers...'):
+                    top_recommendations = hybrid_main(movie_list=fav_movies)
+                st.title("We think you'll like:")
+                for i,j in enumerate(top_recommendations):
+                    st.subheader(str(i+1)+'. '+j)
+                # except:
+                #     st.error("Oops! Looks like this algorithm does't work.\
+                #               We'll need to fix it!")
 
 
 if __name__ == '__main__':
