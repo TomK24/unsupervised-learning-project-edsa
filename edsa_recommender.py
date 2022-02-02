@@ -36,7 +36,7 @@ import numpy as np
 from utils.data_loader import load_movie_titles
 from recommenders.collaborative_based import collab_model
 from recommenders.content_based import content_model
-
+from recommenders.hybrid import hybrid_main
 # Data Loading
 title_list = load_movie_titles('resources/data/movies.csv')
 
@@ -45,7 +45,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Solution Overview, Exploratory Data Analysis, Hybrid Recommender"]
+    page_options = ["Recommender System","Solution Overview", "Exploratory Data Analysis", "Hybrid Recommender"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
@@ -116,6 +116,35 @@ def main():
         st.title("Hybrid Recommender")
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
+
+    if page_selection == "Hybrid Recommender":
+        # Header contents
+        st.write('# Movie Recommender Engine')
+        st.write('### EXPLORE Data Science Academy Unsupervised Predict')
+        st.image('resources/imgs/Image_header.png',use_column_width=True)
+        # Recommender System algorithm selection
+        sys = st.radio("Select an algorithm",
+                       ('Hybrid Filter!'))
+
+        # User-based preferences
+        st.write('### Enter Your Three Favorite Movies')
+        movie_1 = st.selectbox('First Option',title_list)
+        movie_2 = st.selectbox('Second Option',title_list)
+        movie_3 = st.selectbox('Third Option',title_list)
+        fav_movies = [movie_1,movie_2,movie_3]
+
+        # Perform top-10 movie recommendation generation
+        if sys == 'Hybrid Filter!':
+            if st.button("Recommend"):
+                try:
+                    with st.spinner('Crunching the numbers...'):
+                        top_recommendations = hybrid_main(movie_list=fav_movies)
+                    st.title("We think you'll like:")
+                    for i,j in enumerate(top_recommendations):
+                        st.subheader(str(i+1)+'. '+j)
+                except:
+                    st.error("Oops! Looks like this algorithm does't work.\
+                              We'll need to fix it!")
 
 
 if __name__ == '__main__':
