@@ -103,7 +103,7 @@ def main():
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         st.write("How do these models actually worK?")
-        model_selection = st.selectbox('Choose a model',['Content-based recommender', 'Collaborative recommender'])
+        model_selection = st.selectbox('Choose a model',['Content-based recommender', 'Collaborative recommender', 'Hybrid recommender'])
         if model_selection == 'Content-based recommender':
             st.image('resources/imgs/content-based-recommender.png',use_column_width=True)
             st.write('''Our content-based recommender generates recommendations based on similarity of properties. The properties of each movie in the dataset (genre, actors, directors, keywords, genome tags etc) are used here and it is assumed that the collection of properties of movies a user likes can be used to predict what other movies a user is likely to enjoy. For example, a user who's favourite movies are Pulp Fiction, Fight Club and Kill Bill vol. 2 is probably likely to enjoy other movies directed by Quintin Tarantino, as well as many movies with actors like Uma Thurman, Brad Pitt and Samuel L. Jackson in them. ''')
@@ -111,10 +111,12 @@ def main():
             st.image('resources/imgs/Cumulative_explained_variance.png', use_column_width=False)
             st.write('Take for instance the graph above. What\'s important to know about the axes is that the y-axis is a measure of the % of information in the dataset that remains compared to the original. The X-axis is (crudely) a count of how many properties we are keeping in the dataset, ordered from most important to least important. ')
             st.write('Note how the % of information contained in the dataset rises incredibly rapidly at first, this means that the first few hundred properties contain most of the information in the dataset, this allowed us to significantly reduce the size of our dataset because we could retain 1000 properties and discard the other ~5500 while still retaining ~90% of the information in the dataset. This drastically increased the speed of our content-based recommender!')
-        elif model_selection == 'Collaborative recommender':
+        if model_selection == 'Collaborative recommender':
             st.image('resources/imgs/Utility-matrix.png',use_column_width=True)
             st.write('For our collaborative-based recommender, we used the similarity measured between users to make recommendations. We use an approach which clusters based on the idea that similar people (based on the data) generally tend to like similar movies. It predicts which movies a user will like based on the movie preferences of other similar users.')
-    
+        if model_selection == 'Hybrid recommender':
+            st.image('resources/imgs/hybrid.png',use_column_width=False)
+            st.write('Our hybrid recommender is actually deceptively simple. It starts by running the content-based recommender, but instead of just returning a list of most similar movies, it passes these movies to our collaborative recommender model, which then constructs a user-movie-rating utility matrix just containing those movies that are most similar. K means clustering is then performed on this subset of rating data to determine the most similar movies based on both movie metadata and user rating data.')
     if page_selection == 'Exploratory data analysis':
         st.title("Exploratory Data analysis")
         # st.image('resources/imgs/Image_header.png',use_column_width=True)
