@@ -121,15 +121,13 @@ def main():
         st.title("Exploratory Data analysis")
         # st.image('resources/imgs/Image_header.png',use_column_width=True)
         st.write('To be implemented')
-    if page_selection == 'Hybrid Recommender':
-        st.title("Hybrid Recommender")
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
 
     if page_selection == "Hybrid Recommender":
         # Header contents
-        st.write('# Hybrid Movie Recommender Engine')
-        st.write('### EXPLORE Data Science Academy Unsupervised Predict')
+        st.title("Hybrid Recommender")
+        # st.write('# Hybrid Movie Recommender Engine')
         st.image('resources/imgs/Image_header.png',use_column_width=True)
         # Recommender System algorithm selection
         # sys = st.radio("Select an algorithm",
