@@ -102,15 +102,18 @@ def main():
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
-        st.write("Describe your winning approach on this page")
+        st.write("How do these models actually worK?")
         model_selection = st.selectbox('Choose a model',['Content-based recommender', 'Collaborative recommender'])
         if model_selection == 'Content-based recommender':
+            st.image('resources/imgs/content-based-recommender.png',use_column_width=True)
             st.write("To be implemented")
         elif model_selection == 'Collaborative recommender':
+            st.image('resources/imgs/Utility-matrix.png',use_column_width=True)
             st.write('To be implemented')
     
     if page_selection == 'Exploratory data analysis':
         st.title("Exploratory Data analysis")
+        # st.image('resources/imgs/Image_header.png',use_column_width=True)
         st.write('To be implemented')
     if page_selection == 'Hybrid Recommender':
         st.title("Hybrid Recommender")
