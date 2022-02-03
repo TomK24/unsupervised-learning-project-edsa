@@ -78,7 +78,7 @@ def collab_model(movie_list,top_n=10):
         Titles of the top-n movie recommendations to the user.
 
     """
-    print('collab_model function is being called')
+    # print('collab_model function is being called')
     metric='cosine'
     show_distance=False
     movie_titles = dict(zip(movies_df['movieId'], movies_df['title']))
@@ -120,5 +120,5 @@ def collab_model(movie_list,top_n=10):
     for i in similar_ids:
         recommended_movies.append(movie_titles[i])
     # print('Reached final return statement')
-    print(recommended_movies)
+    # print(recommended_movies)
     return recommended_movies
