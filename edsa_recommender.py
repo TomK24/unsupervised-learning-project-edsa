@@ -106,10 +106,11 @@ def main():
         model_selection = st.selectbox('Choose a model',['Content-based recommender', 'Collaborative recommender'])
         if model_selection == 'Content-based recommender':
             st.image('resources/imgs/content-based-recommender.png',use_column_width=True)
-            st.write("To be implemented")
+            st.write('''Our content-based recommender generates recommendations based on similarity of properties. The properties of each movie in the dataset (genre, actors, directors, keywords, genome tags etc) are used here and it is assumed that the collection of properties of movies a user likes can be used to predict what other movies a user is likely to enjoy. For example, a user who's favourite movies are Pulp Fiction, Fight Club and Kill Bill vol. 2 is probably likely to enjoy other movies directed by Quintin Tarantino, as well as many movies with actors like Uma Thurman, Brad Pitt and Samuel L. Jackson in them. ''')
+            st.write('''One challenge with this approach is dataset size. A dataset with thousands of movies will likely have thousands of different properties that all need to be tracked for each movie. In order to make a model that delivers results quickly and without using excessive amounts of memory, it is important to determine what properties are most useful when we want to distinguish between movies, and which properties are not.''')
         elif model_selection == 'Collaborative recommender':
             st.image('resources/imgs/Utility-matrix.png',use_column_width=True)
-            st.write('To be implemented')
+            st.write('For our collaborative-based recommender, we used the similarity measured between users to make recommendations. We use an approach which clusters based on the idea that similar people (based on the data) generally tend to like similar movies. It predicts which movies a user will like based on the movie preferences of other similar users.')
     
     if page_selection == 'Exploratory data analysis':
         st.title("Exploratory Data analysis")
