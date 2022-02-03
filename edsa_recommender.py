@@ -45,7 +45,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Solution Overview", "Exploratory Data Analysis", "Hybrid Recommender"]
+    page_options = ["Recommender System", "Hybrid Recommender","Solution Overview", "Exploratory Data Analysis"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
